@@ -1,5 +1,5 @@
 <html lang='es'><head><meta name='theme-color' content='#070912'><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Luxury Auto Packs</title><style>
+<title>Leoohg Store</title><style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:#070912;color:#fff}
 .bg{position:fixed;inset:0;background:
@@ -14,13 +14,25 @@ h1{font-size:4rem;background:linear-gradient(90deg,#fff,#ffd700,#4cc9f0);-webkit
 .btn:hover{transform:translateY(-4px) scale(1.05)}
 .sec{max-width:1100px;margin:70px auto;padding:20px}
 .card{display:flex;flex-wrap:wrap;background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border-radius:25px;overflow:hidden;border:1px solid rgba(255,255,255,.15)}
-.card img{width:50%;min-width:320px;object-fit:cover}
+.card img{width:50%;min-width:320px;object-fit:cover;display:block}
+img{max-width:100%;height:auto}
+.hero{min-height:100svh}
+@media(max-width:768px){
+h1{font-size:2.2rem}
+.box{padding:24px;margin:16px}
+.sec{margin:30px auto;padding:16px}
+.card{flex-direction:column}
+.card img{width:100%;min-width:0;max-height:240px}
+.info{padding:20px}
+.stats{flex-direction:column;gap:18px}
+.btn{width:100%;text-align:center}
+}
 .info{flex:1;padding:35px}
 .price{font-size:2.2rem;color:#ffd700;margin:20px 0}
 ul{line-height:2;padding-left:20px}
 .stats{display:flex;justify-content:space-around;margin:30px 0}.stat{text-align:center}
 footer{text-align:center;padding:30px;color:#aaa}
 </style></head><body><div class='bg'></div>
-<section class='hero'><div class='box'><h1>LUXURY AUTO PACKS</h1><p>Packs premium para tu servidor.</p><a class='btn' href='#cat'>Explorar Catálogo</a></div></section>
-<section id='cat' class='sec'><div class='stats'><div class='stat'><h2>500+</h2><p>Clientes</p></div><div class='stat'><h2>24/7</h2><p>Compra segura</p></div><div class='stat'><h2>★ 4.9</h2><p>Valoración</p></div></div>
-<div class='card'><img loading='lazy' decoding='async' src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900'><div class='info'><h2>🚗 Pack Autos Premium</h2><div class='price'>30.000 CLP</div><ul><li>✔ Pack con variedad de vehículos.</li><li>✔ Vehículos únicos.</li><li>✔ Vehículos exóticos.</li><li>✔ Sin marcas.</li></ul><a class='btn' target='_blank' href='https://mpago.la/2V3ohUi'>💳 Comprar Ahora</a></div></div></section><footer>© 2026 Luxury Auto Packs</footer></body></html>
+<section class='hero'><div class='box'><h1>Leooohg Store</h1><p>Packs premium para tu servidor.</p><a class='btn' href='#cat'>Explorar Catálogo</a></div></section>
+<section id='cat' class='sec'><div class='stats'><div class='stat'><h2>100+</h2><p>Autos</p></div><div class='stat'><h2>24/7</h2><p>Compra segura</p></div><div class='stat'><h2>★ 4.9</h2><p>Valoración</p></div></div>
+<div class='card'><img loading='lazy' decoding='async' src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900'><div class='info'><h2>🚗 Pack Autos Premium</h2><div class='price'>$30.000 CLP</div><ul><li>✔ Pack con variedad de vehículos.</li><li>✔ Vehículos únicos.</li><li>✔ Vehículos exóticos.</li><li>✔ Sin marcas.</li></ul><a class='btn' target='_blank' href='https://mpago.la/2V3ohUi'>💳 Comprar Ahora</a></div></div></section><footer>© 2026 Luxury Auto Packs</footer></body></html>
