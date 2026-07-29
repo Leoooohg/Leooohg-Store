@@ -1,387 +1,185 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Leooohg | Panel</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tienda de Packs</title>
 
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Poppins", sans-serif;
-    }
+body{
+    background:#111;
+    color:white;
+}
 
-    body {
-      background: #040714;
-      overflow: hidden;
-      color: white;
-      height: 100vh;
-    }
+header{
+    background:#1a1a1a;
+    padding:20px;
+    text-align:center;
+    font-size:28px;
+    font-weight:bold;
+}
 
-    canvas#stars {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-    }
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:30px;
+}
 
-    .hidden { display: none !important; }
+.page{
+    display:none;
+}
 
-    .screen {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
+.active{
+    display:block;
+}
 
-    /* LOGIN / REGISTRO */
-    .auth-card {
-      width: 100%;
-      max-width: 420px;
-      padding: 30px 26px;
-      border-radius: 24px;
-      background: #12163a;
-      box-shadow: 0 0 40px #000;
-      border: 1px solid rgba(255,255,255,.1);
-    }
+.card{
+    background:#1f1f1f;
+    border-radius:15px;
+    overflow:hidden;
+    max-width:400px;
+    margin:auto;
+    box-shadow:0 0 15px rgba(0,0,0,.5);
+}
 
-    .auth-title {
-      text-align: center;
-      font-size: 1.7rem;
-      color: #c7d2fe;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
 
-    .auth-subtitle {
-      text-align: center;
-      color: #9ca3af;
-      font-size: .9rem;
-      margin-bottom: 20px;
-    }
+.card-content{
+    padding:20px;
+    text-align:center;
+}
 
-    .field-input {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid #293060;
-      background: #0f1333;
-      padding: 10px 12px;
-      color: white;
-      margin-bottom: 14px;
-      outline: none;
-    }
+button{
+    background:#00c853;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    margin-top:10px;
+}
 
-    .btn-primary {
-      width: 100%;
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 1rem;
-      background: linear-gradient(135deg,#6366f1,#8b5cf6);
-      border: none;
-      color: white;
-      font-weight: 600;
-      margin-top: 8px;
-      cursor: pointer;
-    }
+button:hover{
+    background:#00e676;
+}
 
-    .switch-link {
-      text-align: center;
-      font-size: .82rem;
-      color: #9ca3af;
-      margin-top: 12px;
-    }
-    .switch-link button {
-      border: none;
-      background: none;
-      color: #818cf8;
-      text-decoration: underline;
-      cursor: pointer;
-    }
+.back{
+    background:#444;
+}
 
-    /* PANEL */
-    .panel-wrapper {
-      width: 100%;
-      max-width: 420px;
-    }
-    .panel-card {
-      padding: 30px 28px;
-      border-radius: 26px;
-      background: #13183d;
-      border: 1px solid rgba(255,255,255,.05);
-      box-shadow: 0 0 40px #000;
-    }
+.price{
+    font-size:28px;
+    color:#00e676;
+    margin:15px 0;
+}
 
-    .panel-avatar {
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin: 0 auto;
-      border: 4px solid #8b5cf6;
-      box-shadow: 0 0 30px #8b5cf6aa;
-    }
-    .panel-avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+ul{
+    text-align:left;
+    margin:20px auto;
+    max-width:400px;
+}
 
-    .panel-title {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-top: 14px;
-      background: linear-gradient(135deg,#22d3ee,#a855f7);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .panel-role {
-      text-align: center;
-      font-size: .88rem;
-      letter-spacing: .5rem;
-      margin-top: 6px;
-      color: #9ca3af;
-    }
-
-    #typing {
-      text-align: center;
-      font-size: .92rem;
-      margin-top: 8px;
-      color: #c7d2fe;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #c7d2fe;
-      animation: caret .8s infinite;
-    }
-
-    @keyframes caret {
-      50% { border-color: transparent; }
-    }
-
-    .circle-btn {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 1px solid #8b5cf6aa;
-      background: #0f1333;
-      font-size: 1.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 18px auto;
-      cursor: pointer;
-    }
-
-    .logout-btn {
-      margin-top: 18px;
-      width: 100%;
-      padding: 11px;
-      background: #ef4444;
-      border: none;
-      color: white;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: .9rem;
-    }
-
-    .music-box {
-      margin-top: 20px;
-      background: #0a0d28;
-      padding: 16px;
-      border-radius: 18px;
-      border: 1px solid #263168;
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .music-icon {
-      width: 42px;
-      height: 42px;
-      background: #5865f2;
-      border-radius: 14px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 1.3rem;
-    }
-  </style>
+li{
+    margin:10px 0;
+}
+</style>
 </head>
 <body>
 
-<canvas id="stars"></canvas>
+<header>
+🚗 Tienda de Packs
+</header>
 
-<!-- LOGIN -->
-<section id="loginScreen" class="screen">
-  <div class="auth-card">
-    <h1 class="auth-title">Iniciar sesión</h1>
-    <p class="auth-subtitle">Ingresa tus credenciales para acceder</p>
+<div class="container">
 
-    <input id="loginUser" class="field-input" placeholder="Usuario">
-    <input id="loginPass" type="password" class="field-input" placeholder="Contraseña">
+    <!-- CATALOGO -->
+    <div id="catalogo" class="page active">
 
-    <button class="btn-primary" onclick="login()">Entrar</button>
+        <h1 style="text-align:center;margin-bottom:30px;">
+            Catálogo
+        </h1>
 
-    <div class="switch-link">
-      ¿No tienes cuenta?
-      <button onclick="showRegister()">Crear cuenta</button>
-    </div>
-  </div>
-</section>
+        <div class="card">
 
-<!-- REGISTRO -->
-<section id="registerScreen" class="screen hidden">
-  <div class="auth-card">
-    <h1 class="auth-title">Crear cuenta</h1>
-    <p class="auth-subtitle">Registra un usuario y contraseña</p>
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1200" alt="Auto">
 
-    <input id="regUser" class="field-input" placeholder="Usuario">
-    <input id="regPass" type="password" class="field-input" placeholder="Contraseña">
-    <input id="regPass2" type="password" class="field-input" placeholder="Confirmar Contraseña">
+            <div class="card-content">
 
-    <button class="btn-primary" onclick="register()">Registrar</button>
+                <h2>Pack Autos Premium</h2>
 
-    <div class="switch-link">
-      ¿Ya tienes cuenta?
-      <button onclick="showLogin()">Iniciar sesión</button>
-    </div>
-  </div>
-</section>
+                <p>
+                    Los mejores vehículos disponibles.
+                </p>
 
-<!-- PANEL -->
-<section id="panelScreen" class="screen hidden">
-  <div class="panel-wrapper">
-    <div class="panel-card">
+                <button onclick="mostrarProducto()">
+                    Ver Producto
+                </button>
 
-      <div class="panel-avatar">
-        <img src="https://wqlcdjfe.space/assets/img/avatar.webp">
-      </div>
-
-      <h1 class="panel-title">Leooohg</h1>
-      <p class="panel-role">DESARROLLADOR</p>
-
-      <div id="typing"></div>
-
-      <button class="circle-btn" onclick="window.open('https://github.com/Leooohg','_blank')">🐱</button>
-
-      <div class="music-box">
-        <div class="music-icon">🎧</div>
-        <div>
-          <div style="font-size:.95rem;font-weight:600">Qué Nos Pasó</div>
-          <div style="font-size:.75rem;color:#9ca3af">Leooohg Music</div>
+            </div>
         </div>
-      </div>
 
-      <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
     </div>
-  </div>
-</section>
 
-<!-- YOUTUBE MUSIC BACKGROUND -->
-<iframe
-  width="1"
-  height="1"
-  style="position:absolute; top:-1000px; left:-1000px;"
-  src="https://www.youtube.com/embed/kFJtggrgNJw?autoplay=1&loop=1&playlist=kFJtggrgNJw&controls=0&disablekb=1&modestbranding=1&rel=0"
-  allow="autoplay"
-></iframe>
+    <!-- PRODUCTO -->
+    <div id="producto" class="page">
+
+        <h1 style="text-align:center;margin-bottom:20px;">
+            Pack Autos Premium
+        </h1>
+
+        <ul>
+            <li>BMW M3 Competition</li>
+            <li>Audi RS7</li>
+            <li>Lamborghini Huracán</li>
+            <li>Ferrari SF90</li>
+            <li>Porsche 911 Turbo S</li>
+        </ul>
+
+        <div style="text-align:center;">
+            <div class="price">
+                $9.990 CLP
+            </div>
+
+            <!-- CAMBIA EL LINK -->
+            <a href="https://link.mercadopago.cl/TU-LINK" target="_blank">
+                <button>
+                    Comprar
+                </button>
+            </a>
+
+            <br>
+
+            <button class="back" onclick="volverCatalogo()">
+                Volver
+            </button>
+        </div>
+
+    </div>
+
+</div>
 
 <script>
-// -------------------- BACKGROUND STARS --------------------
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-
-function resize() {
-  canvas.width = innerWidth;
-  canvas.height = innerHeight;
-}
-resize();
-window.onresize = resize;
-
-let stars = Array.from({ length: 120 }, () => ({
-  x: Math.random() * canvas.width,
-  y: Math.random() * canvas.height,
-  r: Math.random() * 2 + 0.5
-}));
-
-function animateStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  stars.forEach(s => {
-    ctx.beginPath();
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-    ctx.fillStyle = "#a5b4ff";
-    ctx.fill();
-    s.y += 0.4;
-    if (s.y > canvas.height) s.y = -5;
-  });
-  requestAnimationFrame(animateStars);
-}
-animateStars();
-
-// -------------------- AUTH LOGIC --------------------
-function showLogin() {
-  loginScreen.classList.remove("hidden");
-  registerScreen.classList.add("hidden");
-}
-function showRegister() {
-  loginScreen.classList.add("hidden");
-  registerScreen.classList.remove("hidden");
+function mostrarProducto(){
+    document.getElementById("catalogo").classList.remove("active");
+    document.getElementById("producto").classList.add("active");
 }
 
-function register() {
-  const u = regUser.value.trim();
-  const p1 = regPass.value;
-  const p2 = regPass2.value;
-
-  if (!u || !p1) return alert("Completa todos los campos");
-  if (p1 !== p2) return alert("Las contraseñas no coinciden");
-
-  localStorage.setItem("leoo_user", u);
-  localStorage.setItem("leoo_pass", p1);
-
-  alert("Cuenta creada, ahora inicia sesión");
-
-  showLogin();
+function volverCatalogo(){
+    document.getElementById("producto").classList.remove("active");
+    document.getElementById("catalogo").classList.add("active");
 }
-
-function login() {
-  const u = loginUser.value.trim();
-  const p = loginPass.value;
-
-  const savedU = localStorage.getItem("leoo_user");
-  const savedP = localStorage.getItem("leoo_pass");
-
-  if (u === savedU && p === savedP) {
-    loginScreen.classList.add("hidden");
-    panelScreen.classList.remove("hidden");
-  } else {
-    alert("Usuario o contraseña incorrectos");
-  }
-}
-
-function logout() {
-  panelScreen.classList.add("hidden");
-  loginScreen.classList.remove("hidden");
-}
-
-// -------------------- TYPING EFFECT --------------------
-const typing = document.getElementById("typing");
-const txt = "Creando experiencias para la comunidad.";
-let i = 0;
-function typeLoop() {
-  typing.textContent = txt.slice(0, i++);
-  if (i > txt.length) {
-    setTimeout(() => (i = 0), 1200);
-  }
-  setTimeout(typeLoop, 60);
-}
-typeLoop();
 </script>
 
 </body>
