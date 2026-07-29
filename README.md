@@ -1,5 +1,5 @@
-<!doctype html><html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Luxury Auto Packs</title><style>
+<html lang='es'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Leooohg Store</title><style>
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:#070912;color:#fff}
 .bg{position:fixed;inset:0;background:
@@ -21,6 +21,6 @@ ul{line-height:2;padding-left:20px}
 .stats{display:flex;justify-content:space-around;margin:30px 0}.stat{text-align:center}
 footer{text-align:center;padding:30px;color:#aaa}
 </style></head><body><div class='bg'></div>
-<section class='hero'><div class='box'><h1>LUXURY AUTO PACKS</h1><p>Packs premium para tu servidor.</p><a class='btn' href='#cat'>Explorar Catálogo</a></div></section>
-<section id='cat' class='sec'><div class='stats'><div class='stat'><h2>500+</h2><p>Clientes</p></div><div class='stat'><h2>24/7</h2><p>Compra segura</p></div><div class='stat'><h2>★ 4.9</h2><p>Valoración</p></div></div>
+<section class='hero'><div class='box'><h1>Leooohg Store</h1><p>Packs premium para tu servidor.</p><a class='btn' href='#cat'>Explorar Catálogo</a></div></section>
+<section id='cat' class='sec'><div class='stats'><div class='stat'><h2>100+</h2><p>Autos</p></div><div class='stat'><h2>24/7</h2><p>Compra segura</p></div><div class='stat'><h2>★ 4.9</h2><p>Valoración</p></div></div>
 <div class='card'><img src='https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200'><div class='info'><h2>🚗 Pack Autos Premium</h2><div class='price'>30.000 CLP</div><ul><li>✔ Pack con variedad de vehículos.</li><li>✔ Vehículos únicos.</li><li>✔ Vehículos exóticos.</li><li>✔ Sin marcas.</li></ul><a class='btn' target='_blank' href='https://mpago.la/2V3ohUi'>💳 Comprar Ahora</a></div></div></section><footer>© 2026 Luxury Auto Packs</footer></body></html>
